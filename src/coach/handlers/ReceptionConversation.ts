@@ -27,9 +27,8 @@ export default class ReceptionConversation extends EventHandling<Message> {
         .then((checkin: CheckIn[]) => {
           if (checkin.length === 0) return;
           this.setState({
-            possiblecodes: [checkin[0].RefCode],
-            missingIndex: [],
             state: checkin[0].Status as VerifyStatus,
+            finalCode: checkin[0].RefCode,
           });
         }));
   }
@@ -37,6 +36,7 @@ export default class ReceptionConversation extends EventHandling<Message> {
   @Handle(
     new Logics(MessagePred.isMentioned)
       .and(Logics.not(MessagePred.isBot))
+      .and((m) => !m.content.includes('dm') && !m.content.includes('DM'))
       .predicate,
   )(HandlersName.HeyPreeJouey)
   public async onMentionedByGrounder(m: Message) {
@@ -48,9 +48,10 @@ export default class ReceptionConversation extends EventHandling<Message> {
     this.setState({
       ...Guessing.updatePossibleCodes(possiblecodes),
     });
+    console.log(possiblecodes, this.state.possiblecodes, this.state.missingIndex);
 
-    const guessingIndex = shuffle(this.state.missingIndex)[0] || 2;
-    const guessingCharacter = Guessing.possibleCharsFromCodes(possiblecodes, guessingIndex)[0];
+    const guessingIndex = shuffle(this.state.missingIndex)[0];
+    const guessingCharacter = Guessing.possibleCharsFromCodes(possiblecodes, guessingIndex, false)[0];
     const buttons = [ButtonIds.YesButton, ButtonIds.NoButton]
       .map((id) => new MessageButton()
         .setCustomId(id)

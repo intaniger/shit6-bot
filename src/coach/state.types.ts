@@ -40,4 +40,5 @@ export interface IndividualState extends SystemState {
     atkAwaitRole?: Role;
     verified?: Role;
   }
+  finalCode?: string;
 }

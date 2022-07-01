@@ -75,7 +75,7 @@ export default class GuessingInteraction extends EventHandling<Interaction> {
     } else {
       await bi.deferReply();
 
-      this.setState({ state: VerifyStatus.WaitingForFullname });
+      this.setState({ state: VerifyStatus.WaitingForFullname, finalCode: this.state.possiblecodes[0] });
       const newCheckIn = new CheckInModel({
         DiscordUsername: bi.user.username,
         RefCode: this.state.possiblecodes[0],
