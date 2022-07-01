@@ -69,6 +69,14 @@ export default [
   'J64DUA',
   'XAJ9G9',
   '534BYJ',
+  'FDWT5P',
+  'JFM8AR',
+  'YA9KPD',
+  'CXLTVN',
+  '7UG6KR',
+  'V542YU',
+  'PLE44H',
+  'S9PSFG',
 ] as const;
 
 export const thaiNumber = ['๐', '๑', '๒', '๓', '๔', '๕', '๖', '๗', '๘', '๙'];

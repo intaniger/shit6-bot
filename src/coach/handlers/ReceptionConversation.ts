@@ -36,7 +36,6 @@ export default class ReceptionConversation extends EventHandling<Message> {
   @Handle(
     new Logics(MessagePred.isMentioned)
       .and(Logics.not(MessagePred.isBot))
-      .and((m) => !m.content.includes('dm') && !m.content.includes('DM'))
       .predicate,
   )(HandlersName.HeyPreeJouey)
   public async onMentionedByGrounder(m: Message) {
@@ -50,8 +49,8 @@ export default class ReceptionConversation extends EventHandling<Message> {
     });
     console.log(possiblecodes, this.state.possiblecodes, this.state.missingIndex);
 
-    const guessingIndex = shuffle(this.state.missingIndex)[0];
-    const guessingCharacter = Guessing.possibleCharsFromCodes(possiblecodes, guessingIndex, false)[0];
+    const guessingIndex = shuffle(this.state.missingIndex)[0] || 2;
+    const guessingCharacter = Guessing.possibleCharsFromCodes(possiblecodes, guessingIndex)[0];
     const buttons = [ButtonIds.YesButton, ButtonIds.NoButton]
       .map((id) => new MessageButton()
         .setCustomId(id)
@@ -59,7 +58,7 @@ export default class ReceptionConversation extends EventHandling<Message> {
         .setStyle('PRIMARY'));
 
     m.reply({
-      content: `ส่าหวัดดีเคิ้บพรี่เจย 🫡 เกล้ากระผมก๋อลองเดาตัวที่ ${thaiNumber[guessingIndex + 1]} นะเคิ้บ มังคือ ${guessingCharacter} หรือป่ะค้าบ`,
+      content: `ส่าหวัดดีเคิ้บพรี่เจย 🫡 <@${m.author.id}> เกล้ากระผมก๋อลองเดาตัวที่ ${thaiNumber[guessingIndex + 1]} นะเคิ้บ มังคือ ${guessingCharacter} หรือป่ะค้าบ`,
       components: [buttons.reduce((actionRow, b) => actionRow.addComponents(b), new MessageActionRow())],
     });
 

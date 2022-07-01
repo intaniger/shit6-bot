@@ -25,6 +25,7 @@ export default class TicketConversation extends EventHandling<Message> {
       .exec();
     this.setState({ state: VerifyStatus.WaitingForATK });
     this.state.roles?.userRole?.add(this.state.roles.atkAwaitRole!);
+    this.state.roles?.userRole?.remove(this.state.roles.fullnameAwaitRole!);
     m.channel.send(`Ref code: ${this.state.possiblecodes[0]} นะค้าบ\nรบกวนขั้นตอนสุดท้าย ส่งผลตรวจ ATK มาทาง DM เพื่อรับ token เข้างานนะค้าบ`);
   }
 
@@ -47,6 +48,7 @@ export default class TicketConversation extends EventHandling<Message> {
     const filename = path.join(process.cwd(), 'assets', `${this.state.possiblecodes[0]}.jpg`);
     await toFile(filename, this.state.possiblecodes[0], { errorCorrectionLevel: 'H', version: 1 });
     this.state.roles?.userRole?.add(this.state.roles.verified!);
+    this.state.roles?.userRole?.remove(this.state.roles.atkAwaitRole!);
     m.channel.send({ content: 'here is your ticket:', files: [filename] });
   }
 }

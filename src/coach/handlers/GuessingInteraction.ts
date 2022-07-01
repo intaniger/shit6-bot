@@ -67,7 +67,7 @@ export default class GuessingInteraction extends EventHandling<Interaction> {
           .setStyle('PRIMARY'));
 
       bi.reply({
-        content: `เยี่ยมเลยเคิ้ฟพรี่เจย 🫡 เกล้ากระผมจะลองเดาตัวที่ ${thaiNumber[guessingIndex + 1]} ต่อนะเคิ้บ มังคือ ${guessingCharacter} ใช่เป่า`,
+        content: `เยี่ยมเลยเคิ้ฟพรี่เจย 🫡 <@${bi.user.id}> เกล้ากระผมจะลองเดาตัวที่ ${thaiNumber[guessingIndex + 1]} ต่อนะเคิ้บ มังคือ ${guessingCharacter} ใช่เป่า`,
         components: [buttons.reduce((actionRow, b) => actionRow.addComponents(b), new MessageActionRow())],
       });
 
