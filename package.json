@@ -46,7 +46,7 @@
     "@oclif/test": "^2",
     "@types/chai": "^4",
     "@types/dedent": "^0.7.0",
-    "@types/mocha": "^9.0.0",
+    "@types/mocha": "^9.1.1",
     "@types/node": "^16.9.4",
     "@typescript-eslint/eslint-plugin": "^5.27.0",
     "@typescript-eslint/parser": "^5.27.0",
