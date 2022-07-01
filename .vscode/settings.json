@@ -1,0 +1,10 @@
+{
+  "conventionalCommits.scopes": [
+    "base",
+    "API",
+    "conversation",
+    "SearchInteraction",
+    "all",
+    "Flight"
+  ]
+}
