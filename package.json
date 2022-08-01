@@ -33,7 +33,7 @@
     "discord-api-types": "^0.33.2",
     "discord.js": "^13.7.0",
     "google-it": "^1.6.2",
-    "keyv": "^4.3.0",
+    "keyv": "^4.3.3",
     "lodash": "^4.17.21",
     "mongoose": "^6.3.5",
     "puppeteer": "^14.3.0",
