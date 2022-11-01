@@ -35,7 +35,7 @@
     "google-it": "^1.6.2",
     "keyv": "^4.3.0",
     "lodash": "^4.17.21",
-    "mongoose": "^6.3.5",
+    "mongoose": "^6.7.0",
     "puppeteer": "^14.3.0",
     "qrcode": "^1.5.0",
     "reflect-metadata": "^0.1.13",
